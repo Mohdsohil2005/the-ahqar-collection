@@ -1,5 +1,6 @@
 {
   "framework": "vite",
+  "buildCommand": "node ./node_modules/typescript/bin/tsc && vite build",
   "rewrites": [
     {
       "source": "/(.*)",
