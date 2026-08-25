@@ -3,7 +3,7 @@
   "buildCommand": "npm run build",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!assets|images|favicon|apple-touch-icon).*).*",
       "destination": "/index.html"
     }
   ]
