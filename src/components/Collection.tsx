@@ -2,6 +2,7 @@ import React from 'react';
 import { Product } from '../types';
 import { ProductCard } from './ProductCard';
 import { Sparkles } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface CollectionProps {
   products: Product[];
@@ -9,6 +10,8 @@ interface CollectionProps {
 }
 
 export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduct }) => {
+  const headerRef = useScrollReveal<HTMLDivElement>(0.1);
+
   return (
     <section id="collection" className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative max-w-7xl mx-auto overflow-hidden">
       
@@ -16,7 +19,10 @@ export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduc
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-96 bg-gradient-to-r from-pink-100/30 via-rose-100/20 to-pink-50/20 blur-3xl pointer-events-none rounded-full" />
 
       {/* Section Header */}
-      <div className="relative z-10 text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4">
+      <div 
+        ref={headerRef}
+        className="relative z-10 text-center max-w-2xl mx-auto mb-10 sm:mb-16 space-y-3 sm:space-y-4 scroll-reveal"
+      >
         
         <div className="inline-flex items-center gap-2 text-ahqar-rose text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em]">
           <Sparkles className="w-3.5 h-3.5" />
@@ -37,11 +43,12 @@ export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduc
 
       {/* Product Grid - Responsive 1 column on mobile, 2 on tablet, 3 on desktop */}
       <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch max-w-md sm:max-w-none mx-auto">
-        {products.map((product) => (
+        {products.map((product, index) => (
           <ProductCard
             key={product.id}
             product={product}
             onSelect={onSelectProduct}
+            staggerIndex={index}
           />
         ))}
       </div>
@@ -55,4 +62,3 @@ export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduc
     </section>
   );
 };
-

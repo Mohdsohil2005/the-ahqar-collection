@@ -20,7 +20,7 @@ export const NavbarWhatsAppButton: React.FC = () => {
       type="button"
       aria-label="WhatsApp"
       onClick={(e) => e.preventDefault()}
-      className="relative p-2 sm:p-2.5 rounded-full text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50/80 transition-all duration-300 border border-transparent hover:border-emerald-200/60 flex items-center justify-center cursor-default focus:outline-none"
+      className="relative p-2 sm:p-2.5 rounded-full text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50/80 transition-all duration-300 border border-transparent hover:border-emerald-200/60 flex items-center justify-center cursor-default focus:outline-none active-press"
     >
       <WhatsAppIcon className="w-5 h-5 sm:w-6 sm:h-6" />
     </button>
@@ -30,12 +30,12 @@ export const NavbarWhatsAppButton: React.FC = () => {
 // Mobile Floating Button (Fixed at bottom-right viewport, non-functional visual placeholder)
 export const FloatingWhatsAppButton: React.FC = () => {
   return (
-    <div className="lg:hidden fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
+    <div className="lg:hidden fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40 animate-gentleFloat">
       <button
         type="button"
         aria-label="WhatsApp"
         onClick={(e) => e.preventDefault()}
-        className="w-14 h-14 sm:w-[56px] sm:h-[56px] rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-lg shadow-emerald-600/30 border border-emerald-400/40 flex items-center justify-center transition-transform duration-300 hover:scale-105 active:scale-95 cursor-default focus:outline-none"
+        className="w-14 h-14 sm:w-[56px] sm:h-[56px] rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-white shadow-lg shadow-emerald-600/30 border border-emerald-400/40 flex items-center justify-center transition-transform duration-300 hover:scale-105 active:scale-92 cursor-default focus:outline-none active-press"
       >
         <WhatsAppIcon className="w-7 h-7" />
       </button>

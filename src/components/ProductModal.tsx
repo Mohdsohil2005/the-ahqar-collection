@@ -26,7 +26,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
       {/* Backdrop Overlay */}
       <div 
         onClick={onClose}
-        className="fixed inset-0 bg-ahqar-deep/40 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-ahqar-deep/45 backdrop-blur-md transition-opacity"
       />
 
       {/* Modal Card */}
@@ -35,7 +35,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-white/90 hover:bg-white text-ahqar-deep shadow-md transition-colors border border-pink-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-white/90 hover:bg-white text-ahqar-deep shadow-md transition-all duration-200 border border-pink-100 min-h-[44px] min-w-[44px] flex items-center justify-center active-press"
           aria-label="Close details"
         >
           <X className="w-5 h-5" />
@@ -48,7 +48,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
               src={product.image}
               alt={product.name}
               onError={() => setImageError(true)}
-              className="w-full h-full object-contain max-h-[340px] md:max-h-none filter drop-shadow-md"
+              className="w-full h-full object-contain max-h-[340px] md:max-h-none filter drop-shadow-md transform hover:scale-102 transition-transform duration-500"
             />
           ) : (
             <div className="p-6 text-center space-y-3">
@@ -94,19 +94,19 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
             {/* Information Specs Cards (Work, Color, Size) */}
             <div className="space-y-2.5 pt-2 border-t border-pink-100/80">
               {/* Work */}
-              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hover:border-pink-200/90 transition-colors duration-200 active-press">
                 <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Work</span>
                 <span className="text-ahqar-text font-medium">{product.work}</span>
               </div>
 
               {/* Color */}
-              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hover:border-pink-200/90 transition-colors duration-200 active-press">
                 <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Color</span>
                 <span className="text-ahqar-text font-medium">{product.color}</span>
               </div>
 
               {/* Fixed Size (Informational) */}
-              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs hover:border-pink-200/90 transition-colors duration-200 active-press">
                 <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Size</span>
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-white border border-pink-200 text-ahqar-deep font-semibold tracking-wide">
                   {product.size}
@@ -120,7 +120,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           <div className="space-y-3 pt-3 border-t border-pink-100">
             <button
               onClick={handleWhatsAppInquiry}
-              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-medium text-xs uppercase tracking-widest shadow-md transition-all duration-300 flex items-center justify-center gap-2 min-h-[48px]"
+              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-medium text-xs uppercase tracking-widest shadow-md transition-all duration-300 flex items-center justify-center gap-2 min-h-[48px] active-press"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Inquire / Order via WhatsApp</span>
