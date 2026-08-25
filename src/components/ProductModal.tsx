@@ -8,18 +8,15 @@ interface ProductModalProps {
 }
 
 export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
-  const [selectedSize, setSelectedSize] = useState<string>('');
   const [imageError, setImageError] = useState(false);
   const [inquired, setInquired] = useState(false);
 
   if (!product) return null;
 
-  const currentSize = selectedSize || product.sizes[1] || product.sizes[0];
-
   const handleWhatsAppInquiry = () => {
     setInquired(true);
     const message = encodeURIComponent(
-      `Hello The Ahqar Collection! I am interested in ordering the ${product.name} (${product.formattedPrice}, Size: ${currentSize}). Could you please share more details?`
+      `Hello The Ahqar Collection! I am interested in ordering the ${product.name} (${product.formattedPrice}, Size: ${product.size}). Could you please share more details?`
     );
     window.open(`https://wa.me/?text=${message}`, '_blank');
   };
@@ -38,7 +35,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2 rounded-full bg-white/90 hover:bg-white text-ahqar-deep shadow-md transition-colors border border-pink-100"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 p-2.5 rounded-full bg-white/90 hover:bg-white text-ahqar-deep shadow-md transition-colors border border-pink-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
           aria-label="Close details"
         >
           <X className="w-5 h-5" />
@@ -51,7 +48,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
               src={product.image}
               alt={product.name}
               onError={() => setImageError(true)}
-              className="w-full h-full object-contain max-h-[360px] md:max-h-none filter drop-shadow-md"
+              className="w-full h-full object-contain max-h-[340px] md:max-h-none filter drop-shadow-md"
             />
           ) : (
             <div className="p-6 text-center space-y-3">
@@ -64,72 +61,66 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
           )}
 
           {product.badge && (
-            <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-medium uppercase tracking-widest bg-white/90 text-ahqar-deep border border-pink-200 shadow-sm">
+            <span className="absolute top-3 left-3 sm:top-4 sm:left-4 px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest bg-white/95 text-ahqar-deep border border-pink-200 shadow-sm backdrop-blur-md">
               {product.badge}
             </span>
           )}
         </div>
 
-        {/* Right Side: Product Details & Inquiry */}
+        {/* Right Side: Product Details & Hierarchy */}
         <div className="p-5 sm:p-8 flex flex-col justify-between space-y-5 bg-white">
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-4">
             
-            <div className="text-[10px] sm:text-xs tracking-widest uppercase text-ahqar-rose font-medium">
-              {product.fabric}
+            {/* Product Name */}
+            <div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-ahqar-text font-normal leading-snug">
+                {product.name}
+              </h2>
+              <p className="text-xs sm:text-sm text-ahqar-rose font-medium tracking-wide mt-1">
+                {product.subtitle}
+              </p>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-serif text-ahqar-text font-normal leading-tight">
-              {product.name}
-            </h2>
-
+            {/* Price */}
             <div className="text-xl sm:text-2xl font-serif font-semibold text-ahqar-deep">
               {product.formattedPrice}
             </div>
 
+            {/* Description */}
             <p className="text-xs sm:text-sm text-ahqar-muted leading-relaxed font-light">
               {product.description}
             </p>
 
-            {/* Specs Grid */}
-            <div className="grid grid-cols-1 gap-1.5 pt-3 border-t border-pink-100 text-xs text-ahqar-muted">
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-ahqar-text">Craftsmanship:</span>
-                <span>{product.work}</span>
+            {/* Information Specs Cards (Work, Color, Size) */}
+            <div className="space-y-2.5 pt-2 border-t border-pink-100/80">
+              {/* Work */}
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Work</span>
+                <span className="text-ahqar-text font-medium">{product.work}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="font-semibold text-ahqar-text">Set Includes:</span>
-                <span>{product.includes}</span>
+
+              {/* Color */}
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Color</span>
+                <span className="text-ahqar-text font-medium">{product.color}</span>
+              </div>
+
+              {/* Fixed Size (Informational) */}
+              <div className="p-2.5 sm:p-3 rounded-xl bg-pink-50/60 border border-pink-100/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                <span className="font-semibold text-ahqar-deep uppercase tracking-wider text-[10px]">Size</span>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-md bg-white border border-pink-200 text-ahqar-deep font-semibold tracking-wide">
+                  {product.size}
+                </span>
               </div>
             </div>
 
-            {/* Size Selector */}
-            <div className="space-y-2 pt-2">
-              <label className="text-[11px] uppercase tracking-wider text-ahqar-text font-semibold block">
-                Select Length / Size:
-              </label>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size}
-                    onClick={() => setSelectedSize(size)}
-                    className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-xs tracking-wider transition-all duration-200 ${
-                      currentSize === size
-                        ? 'bg-ahqar-deep text-white font-semibold shadow-sm'
-                        : 'bg-pink-50 text-ahqar-muted hover:bg-pink-100 border border-pink-100'
-                    }`}
-                  >
-                    {size}
-                  </button>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-2.5 pt-3 border-t border-pink-100">
+          <div className="space-y-3 pt-3 border-t border-pink-100">
             <button
               onClick={handleWhatsAppInquiry}
-              className="w-full py-3 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-medium text-xs uppercase tracking-widest shadow-md transition-all duration-300 flex items-center justify-center gap-2"
+              className="w-full py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-medium text-xs uppercase tracking-widest shadow-md transition-all duration-300 flex items-center justify-center gap-2 min-h-[48px]"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Inquire / Order via WhatsApp</span>
@@ -157,4 +148,3 @@ export const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) 
     </div>
   );
 };
-

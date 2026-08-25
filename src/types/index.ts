@@ -5,13 +5,11 @@ export interface Product {
   price: number;
   formattedPrice: string;
   description: string;
-  fabric: string;
   work: string;
-  includes: string;
   image: string;
   badge?: string;
   color: string;
-  sizes: string[];
+  size: string;
 }
 
 export type ActiveTab = 'home' | 'collection' | 'about' | 'contact';

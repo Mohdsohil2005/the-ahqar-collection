@@ -31,7 +31,7 @@ export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduc
         <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-ahqar-rose to-transparent mx-auto" />
 
         <p className="text-xs sm:text-sm md:text-base text-ahqar-muted font-light leading-relaxed px-2">
-          Explore our signature selection of 5 bespoke Indian Abayas, lovingly handcrafted with delicate accents, opulent fabrics, and modest perfection.
+          Explore our signature selection of 5 bespoke Indian Abayas & Niqabs, thoughtfully tailored with delicate accents and modest perfection.
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export const Collection: React.FC<CollectionProps> = ({ products, onSelectProduc
       {/* Footer Info Notice */}
       <div className="mt-12 sm:mt-16 text-center px-2">
         <p className="text-[11px] sm:text-xs text-ahqar-lightMuted tracking-wider font-light">
-          ✦ Every Abaya in The Ahqar Collection is custom-tailored with premium finishing & complimentary matching Sheila ✦
+          ✦ Every design in The Ahqar Collection is crafted with premium finishing & elegant detailing ✦
         </p>
       </div>
     </section>

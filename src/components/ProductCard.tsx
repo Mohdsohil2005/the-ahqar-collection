@@ -38,7 +38,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
             className="w-full h-full object-contain object-center transform group-hover:scale-105 transition-transform duration-500 ease-out filter drop-shadow-sm"
           />
         ) : (
-          /* Smart Visual Fallback Card when photo file isn't found */
+          /* Visual Fallback Card */
           <div className="w-full h-full flex flex-col items-center justify-center p-4 text-center bg-gradient-to-br from-pink-50 via-rose-100/40 to-pink-100/30 relative rounded-xl">
             <div className="w-16 h-16 rounded-full bg-white/80 border border-pink-200/60 flex items-center justify-center shadow-inner mb-3 group-hover:scale-110 transition-transform duration-500">
               <Sparkles className="w-7 h-7 text-ahqar-rose animate-pulse" />
@@ -56,7 +56,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
         <div className="absolute inset-0 bg-gradient-to-t from-ahqar-deep/50 via-ahqar-deep/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4 z-10">
           <button
             onClick={() => onSelect(product)}
-            className="w-full py-2.5 px-4 rounded-xl bg-white/95 text-ahqar-deep text-xs font-semibold uppercase tracking-widest hover:bg-white transition-colors duration-200 shadow-md flex items-center justify-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300"
+            className="w-full py-2.5 px-4 rounded-xl bg-white/95 text-ahqar-deep text-xs font-semibold uppercase tracking-widest hover:bg-white transition-colors duration-200 shadow-md flex items-center justify-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 min-h-[44px]"
           >
             <Eye className="w-4 h-4 text-ahqar-accent" />
             <span>View Details</span>
@@ -67,10 +67,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
       {/* Product Content Details */}
       <div className="p-4 sm:p-5 flex flex-col flex-grow justify-between space-y-3 bg-white">
         <div>
-          <div className="text-[10px] sm:text-[11px] tracking-widest uppercase text-ahqar-rose font-semibold mb-0.5">
-            {product.fabric}
-          </div>
-          
           <h3 className="font-serif text-xl sm:text-2xl text-ahqar-text group-hover:text-ahqar-accent transition-colors duration-300 font-normal leading-snug">
             {product.name}
           </h3>
@@ -91,7 +87,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
 
           <button
             onClick={() => onSelect(product)}
-            className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full border border-pink-200 text-ahqar-accent hover:bg-ahqar-blush/60 hover:border-pink-300 text-[11px] sm:text-xs tracking-wider uppercase font-medium transition-all duration-300 whitespace-nowrap"
+            className="px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full border border-pink-200 text-ahqar-accent hover:bg-ahqar-blush/60 hover:border-pink-300 text-[11px] sm:text-xs tracking-wider uppercase font-medium transition-all duration-300 whitespace-nowrap min-h-[44px] flex items-center justify-center"
           >
             Shop Now
           </button>
@@ -100,4 +96,3 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect }) =
     </div>
   );
 };
-
