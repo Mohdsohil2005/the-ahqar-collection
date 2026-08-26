@@ -106,7 +106,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onOpenAbout, onOpe
 
             <div className="flex items-center justify-center sm:justify-start space-x-3 pt-1">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/the_ahqar?utm_source=qr&igsh=MWx5bjJxemcyOXl4eQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 sm:p-3 rounded-full bg-white text-ahqar-deep hover:text-ahqar-accent hover:bg-pink-100 shadow-sm border border-pink-100 transition-all duration-300"
